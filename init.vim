@@ -7,6 +7,8 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'sbdchd/neoformat'
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
 Plug 'dense-analysis/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
@@ -23,26 +25,30 @@ nnoremap <leader>ec :vsplit ~/.config/nvim/init.vim<CR>
 nnoremap <leader>sc :source ~/.config/nvim/init.vim<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-f> :Ag<space>
-map <C-b> :NERDTreeToggle<CR>
 nnoremap <leader>j <C-W>j
 nnoremap <leader>k <C-W>k
 nnoremap <leader>l <C-W>l
 nnoremap <leader>h <C-W>h
 
-colorscheme gruvbox
+colorscheme gruvbox 
+set background=dark
 syntax on
 set hidden
 set number
 set relativenumber
+set autoindent
 set mouse=a
 set inccommand=split
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set noswapfile
 
-" ctrl-p config
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+"nerdtree configs
+let g:NERDTreeWinPos = "right"
+
+"close nerdtree if it's the only window:
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " close-tag configs
 let g:closetag_filenames = '*.html,*.ctp,*.js'
