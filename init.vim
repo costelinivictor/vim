@@ -5,11 +5,13 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'terryma/vim-multiple-cursors'
+Plug 'ap/vim-css-color'
 Plug 'sbdchd/neoformat'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
 Plug 'dense-analysis/ale'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
 Plug 'honza/vim-snippets'
@@ -29,13 +31,26 @@ nnoremap <leader>j <C-W>j
 nnoremap <leader>k <C-W>k
 nnoremap <leader>l <C-W>l
 nnoremap <leader>h <C-W>h
+nnoremap <leader><Tab> :bnext<CR>
+verbose imap <tab>
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+nmap <leader>gs :G<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gp :Gpush<CR>
 
+
+let g:airline_theme='gruvbox'
+let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox 
 set background=dark
+
 syntax on
 set hidden
-set number
-set relativenumber
 set autoindent
 set mouse=a
 set inccommand=split
@@ -43,7 +58,13 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set noswapfile
+set nowrap
+set number
+set relativenumber
+set laststatus=2
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 "nerdtree configs
 let g:NERDTreeWinPos = "right"
 
@@ -63,3 +84,19 @@ let g:ale_fixers = {
 \   'php': ['prettier'],
 \   'html': ['prettier']
 \}
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
