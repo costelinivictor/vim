@@ -8,7 +8,9 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'ap/vim-css-color'
 Plug 'gryf/wombat256grf'
 Plug 'sbdchd/neoformat'
+Plug 'nanotech/jellybeans.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'tpope/vim-fugitive'
 Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'dense-analysis/ale'
@@ -45,12 +47,12 @@ nmap <leader>gs :G<CR>
 nmap <leader>gc :Gcommit<CR>
 nmap <leader>gp :Gpush<CR>
 nmap <leader>kb :bd!<CR>
+nmap <leader>nb :tabnew<CR>
 nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>rl :set rnu!<CR>
 
-let g:airline_theme='gruvbox'
-let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox 
 set termguicolors     " enable true colors support
+colorscheme jellybeans 
 
 syntax on
 set hidden
@@ -67,6 +69,7 @@ set relativenumber
 set laststatus=2
 set cursorline
 set encoding=UTF-8
+set clipboard=unnamedplus
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
