@@ -14,6 +14,7 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'tpope/vim-fugitive'
 Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'dense-analysis/ale'
+Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
@@ -52,7 +53,7 @@ nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>rl :set rnu!<CR>
 
 set termguicolors     " enable true colors support
-colorscheme jellybeans 
+colorscheme gruvbox 
 
 syntax on
 set hidden
@@ -73,8 +74,11 @@ set clipboard=unnamedplus
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-"nerdtree configs
-let g:NERDTreeWinPos = "right"
+let g:airline_theme='jet'
+let g:gruvbox_bold='1'
+let g:gruvbox_italic='1'
+let g:gruvbox_termcolors='256'
+let g:gruvbox_contrast_dark='hard'
 
 "close nerdtree if it's the only window:
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
