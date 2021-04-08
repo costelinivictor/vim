@@ -12,12 +12,16 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'APZelos/blamer.nvim'
 Plug 'dracula/vim', {'as': 'dracula'}
+Plug 'tomasiser/vim-code-dark'
 Plug 'dense-analysis/ale'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
+Plug 'preservim/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'honza/vim-snippets'
 Plug 'ncm2/ncm2'
@@ -30,7 +34,7 @@ nnoremap <leader>; A;<esc>
 nnoremap <leader>ft :NERDTreeToggle<CR>
 nnoremap <leader>ec :vsplit ~/.config/nvim/init.vim<CR>
 nnoremap <leader>sc :source ~/.config/nvim/init.vim<CR>
-nnoremap <C-p> :Files<CR>
+nnoremap <C-p> :GFiles --cached --others<CR>
 nnoremap <C-f> :Ag<space>
 nnoremap <leader>j <C-W>j
 nnoremap <leader>k <C-W>k
@@ -45,15 +49,17 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 nmap <leader>gs :G<CR>
-nmap <leader>gc :Gcommit<CR>
-nmap <leader>gp :Gpush<CR>
+nmap <leader>gc :Git commit<CR>
+nmap <leader>gd :Git diff<CR>
+nmap <leader>gp :Git push<CR>
 nmap <leader>kb :bd!<CR>
 nmap <leader>nb :tabnew<CR>
+nmap <leader>nh :noh<CR>
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>rl :set rnu!<CR>
 
 set termguicolors     " enable true colors support
-colorscheme gruvbox 
+colorscheme codedark 
 
 syntax on
 set hidden
@@ -74,11 +80,12 @@ set clipboard=unnamedplus
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='jet'
+let g:airline_theme='codedark'
 let g:gruvbox_bold='1'
 let g:gruvbox_italic='1'
 let g:gruvbox_termcolors='256'
-let g:gruvbox_contrast_dark='hard'
+let g:blamer_enabled = 1
+let g:blamer_delay = 200
 
 "close nerdtree if it's the only window:
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
