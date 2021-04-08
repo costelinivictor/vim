@@ -1,20 +1,16 @@
 call plug#begin('~/.vim/plugged')
-Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'codota/tabnine-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ap/vim-css-color'
-Plug 'gryf/wombat256grf'
 Plug 'sbdchd/neoformat'
-Plug 'nanotech/jellybeans.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'APZelos/blamer.nvim'
-Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'tomasiser/vim-code-dark'
 Plug 'dense-analysis/ale'
 Plug 'morhetz/gruvbox'
@@ -50,7 +46,6 @@ vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 nmap <leader>gs :G<CR>
 nmap <leader>gc :Git commit<CR>
-nmap <leader>gd :Git diff<CR>
 nmap <leader>gp :Git push<CR>
 nmap <leader>kb :bd!<CR>
 nmap <leader>nb :tabnew<CR>
@@ -78,22 +73,25 @@ set cursorline
 set encoding=UTF-8
 set clipboard=unnamedplus
 
+" Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='codedark'
-let g:gruvbox_bold='1'
-let g:gruvbox_italic='1'
-let g:gruvbox_termcolors='256'
-let g:blamer_enabled = 1
-let g:blamer_delay = 200
 
-"close nerdtree if it's the only window:
+
+" Blamer
+let g:blamer_enabled = 1
+let g:blamer_delay = 1000
+let g:blamer_show_in_visual_modes = 0
+highlight Blamer guifg=darkgrey
+
+" Close nerdtree if it's the only window:
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " close-tag configs
 let g:closetag_filenames = '*.html,*.ctp,*.js'
 
-" ale configs
+" Ale configs
 let g:ale_fix_on_save = 1
 let g:ale_linters_explicit = 1
 
