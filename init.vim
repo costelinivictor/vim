@@ -3,6 +3,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'editorconfig/editorconfig-vim'
 Plug 'codota/tabnine-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ap/vim-css-color'
