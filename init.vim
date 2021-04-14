@@ -61,14 +61,14 @@ nnoremap <A-j> :resize +5<cr>
 nnoremap <A-k> :resize -5<cr>
 nnoremap <A-l> :vertical resize +5<cr>
 
-
-set termguicolors     " enable true colors support
+"colorscheme
 let g:gruvbox_contrast_dark="soft"
 colorscheme gruvbox 
 
 syntax on
 set hidden
 set autoindent
+set termguicolors
 set mouse=a
 set inccommand=split
 set tabstop=4
@@ -93,11 +93,6 @@ let g:blamer_enabled = 1
 let g:blamer_delay = 1000
 let g:blamer_show_in_visual_modes = 0
 highlight Blamer guifg=darkgrey
-
-" Multiple cursors
-"let g:multi_cursor_use_default_mapping=0
-"let g:multi_cursor_support_imap=1
-"let g:multi_cursor_start_word_key = '<C-d>'
 
 " Close nerdtree if it's the only window:
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -130,4 +125,3 @@ inoremap <silent><expr> <Tab>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
