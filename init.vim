@@ -9,8 +9,10 @@ Plug 'ap/vim-css-color'
 Plug 'sbdchd/neoformat'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
+Plug 'stsewd/fzf-checkout.vim'
 Plug 'tpope/vim-surround'
 Plug 'APZelos/blamer.nvim'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'tomasiser/vim-code-dark'
 Plug 'dense-analysis/ale'
 Plug 'morhetz/gruvbox'
@@ -30,7 +32,7 @@ nnoremap <leader>; A;<esc>
 nnoremap <leader>ft :NERDTreeToggle<CR>
 nnoremap <leader>ec :vsplit ~/.config/nvim/init.vim<CR>
 nnoremap <leader>sc :source ~/.config/nvim/init.vim<CR>
-nnoremap <C-p> :GFiles --cached --others<CR>
+nnoremap <expr> <C-p> (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<cr>"
 nnoremap <C-f> :Ag<space>
 nnoremap <leader>j <C-W>j
 nnoremap <leader>k <C-W>k
@@ -54,7 +56,8 @@ nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>rl :set rnu!<CR>
 
 set termguicolors     " enable true colors support
-colorscheme codedark 
+let g:gruvbox_contrast_dark="soft"
+colorscheme gruvbox 
 
 syntax on
 set hidden
@@ -76,14 +79,18 @@ set clipboard=unnamedplus
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='codedark'
-
+let g:airline_theme='gruvbox'
 
 " Blamer
 let g:blamer_enabled = 1
 let g:blamer_delay = 1000
 let g:blamer_show_in_visual_modes = 0
 highlight Blamer guifg=darkgrey
+
+" Multiple cursors
+"let g:multi_cursor_use_default_mapping=0
+"let g:multi_cursor_support_imap=1
+"let g:multi_cursor_start_word_key = '<C-d>'
 
 " Close nerdtree if it's the only window:
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
