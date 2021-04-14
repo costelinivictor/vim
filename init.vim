@@ -55,6 +55,13 @@ nmap <leader>nh :noh<CR>
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>rl :set rnu!<CR>
 
+" resize current buffer by +/- 5 
+nnoremap <A-h> :vertical resize -5<cr>
+nnoremap <A-j> :resize +5<cr>
+nnoremap <A-k> :resize -5<cr>
+nnoremap <A-l> :vertical resize +5<cr>
+
+
 set termguicolors     " enable true colors support
 let g:gruvbox_contrast_dark="soft"
 colorscheme gruvbox 
