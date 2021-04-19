@@ -88,14 +88,9 @@ nnoremap <C-l> :vertical resize +5<cr>
 
 " ---------------------------------- Color scheme -----------------------------------
 
-"if has('termguicolors')
-  "set termguicolors
-"endif
-"let g:sonokai_style = 'andromeda'
-"let g:sonokai_transparent_background = 1
-"let g:sonokai_diagnostic_text_highlight = 1
-"let g:sonokai_menu_selection_background = 'green'
-"let g:sonokai_enable_italic = 1
+if has('termguicolors')
+  set termguicolors
+endif
 
 set t_Co=256
 colorscheme codedark 
